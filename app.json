@@ -11,5 +11,23 @@
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "风雨穿行",
         "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "",
+                "selectedIconPath": ""
+            },
+            {
+                "pagePath": "pages/login/login",
+                "text": "我的",
+                "iconPath": "",
+                "selectedIconPath": ""
+            }
+        ],
+        "color": "gray",
+        "selectedColor": "red"
     }
 }

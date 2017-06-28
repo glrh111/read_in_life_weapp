@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      username: "卧槽",
+      username: "",
       password: "",
       submit_available: false
   },
@@ -48,7 +48,12 @@ Page({
               }
           },
           fail: function(re) {
-
+              // 提示网络错误
+              wx.showToast({
+                  title: '网络错误',
+                  icon: 'success',
+                  duration: 3000
+              });
           }
       })
   },
