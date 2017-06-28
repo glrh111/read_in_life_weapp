@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <view  bindtap="go_to_login_page" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
@@ -9,4 +9,6 @@
   </view>
 
   <image src="http://o9hjg7h8u.bkt.clouddn.com/devices.png"></image>
+
+  <button >Login</button>
 </view>

@@ -12,6 +12,12 @@ Page({
       url: '../logs/logs'
     })
   },
+  // 跳转到login页面
+  go_to_login_page: function() {
+      wx.navigateTo({
+          url: '../login/login',
+      })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this
@@ -21,6 +27,11 @@ Page({
       that.setData({
         userInfo:userInfo
       })
+    });
+    wx.login({
+        success: function(data) {
+            console.log('wx.login.data', data)
+        }
     })
   }
 })

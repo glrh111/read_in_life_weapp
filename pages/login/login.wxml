@@ -1,0 +1,13 @@
+<!--pages/login/login.wxml-->
+
+<!-- 上面是icon -->
+<include src="../components/icon/icon" />
+
+
+<!-- 下面是两种登录方式 -->
+<button class="classname" bindtap="nav_to_login_page" size="default" type="default" data-login_type="1">
+微信登录
+</button>
+<button class="classname" bindtap="nav_to_login_page" size="default" type="default" data-login_type="2">
+用户名登录
+</button>

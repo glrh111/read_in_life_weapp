@@ -1,0 +1,39 @@
+<include src="../components/icon/icon" />
+
+<!-- 这里是用户名密码的输入框 -->
+
+<view class="weui-cells weui-cells_after-title">
+    <!-- 用户名 -->
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">用户名</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindinput" class="weui-input" placeholder="请输入用户名"
+             data-fieldname="username" />
+        </view>
+    </view>
+    <!-- 密码 -->
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">密码</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindinput" class="weui-input" placeholder="请输入密码" password="true" data-fieldname="password"   />
+        </view>
+    </view>
+
+    
+    
+
+
+</view>
+
+
+<!-- 提交按钮 -->
+
+<view class="weui-btn-area">
+    <button bindtap="log_in" class="weui-btn" type="primary" disabled="{{!submit_available}}" >
+    登录
+    </button>
+</view>
