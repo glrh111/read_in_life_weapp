@@ -1,6 +1,4 @@
-function login_by_username(username, password) {
-    
-}
+var net = require('../../utils/net.js');
 
 Page({
 
@@ -17,6 +15,8 @@ Page({
     console.log(e);
     var login_type = parseInt(e.target.dataset.login_type);
     if (1 == login_type) {
+        // 下面进行两个请求，需要一个提示的加载框
+        net.net_loading();
         wx.login({
             success: function(res) {
                 console.log(res);
@@ -48,11 +48,11 @@ Page({
 
                             // 跳转到关联页面
                             wx.navigateTo({
-                                url: '',
+                                url: 'login_page_weapp_ass',
                             });
 
                         } else {
-                            // 提示获取openid失败
+                            // todo 提示获取openid失败
                         }
                     },
                     fail: function(res) {

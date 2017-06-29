@@ -28,10 +28,5 @@ Page({
         userInfo:userInfo
       })
     });
-    wx.login({
-        success: function(data) {
-            console.log('wx.login.data', data)
-        }
-    })
   }
 })

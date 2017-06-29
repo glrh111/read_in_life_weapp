@@ -6,7 +6,9 @@
         "pages/logs/logs",
         "pages/login/login",
         "pages/login/login_page_weapp_ass",
-        "pages/login/login_page_weapp_ass"
+        "pages/login/login_page_weapp_ass",
+        "pages/components/info_tip/info_tip",
+        "pages/components/info_tip/info_tip"
     ],
     "window": {
         "backgroundTextStyle": "light",

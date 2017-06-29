@@ -1,0 +1,19 @@
+<!--
+icon_type: info_circle
+content: 文案提示的内容
+-->
+
+<template name="info_tip">
+  <!--info_tip.wxml-->
+<view style="width:100%;text-align:center;">
+<!-- 这是一个图标 -->
+<view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line"><icon type="{{icon_type}}" size="23"></icon></view>
+</view>
+
+<!-- 这是一段提示文案 -->
+<view class="weui-loadmore weui-loadmore__tips" style="color:#7f7f7f;width:70%;">
+{{content}}
+</view>
+</view>
+</template>
