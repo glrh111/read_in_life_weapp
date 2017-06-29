@@ -4,30 +4,33 @@
         "pages/components/icon/icon",
         "pages/login/login_page_username",
         "pages/logs/logs",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/login/login_page_weapp_ass",
+        "pages/login/login_page_weapp_ass"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "风雨穿行",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
     },
     "tabBar": {
         "list": [
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",
-                "iconPath": "",
-                "selectedIconPath": ""
+                "iconPath": "pics/home-gray.png",
+                "selectedIconPath": "pics/home-green.png"
             },
             {
                 "pagePath": "pages/login/login",
                 "text": "我的",
-                "iconPath": "",
-                "selectedIconPath": ""
+                "iconPath": "pics/mine-gray.png",
+                "selectedIconPath": "pics/mine-green.png"
             }
         ],
         "color": "gray",
-        "selectedColor": "red"
+        "selectedColor": "#62b900"
     }
 }

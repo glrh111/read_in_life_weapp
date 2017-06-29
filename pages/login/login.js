@@ -17,7 +17,55 @@ Page({
     console.log(e);
     var login_type = parseInt(e.target.dataset.login_type);
     if (1 == login_type) {
-        
+        wx.login({
+            success: function(res) {
+                console.log(res);
+                var js_code = res.code;
+                // request for /account/log_in
+                wx.request({
+                    url: getApp().globalData.api_host + '/account/log_in',
+                    method: "POST",
+                    data: {
+                        "js_code": js_code,
+                        "platform": 1,
+                        "login_type": 2
+                    },
+                    success: function(res) {
+                        console.log(res);
+                        var success_code = res.data.code;
+                        if (1 == success_code) {
+                            // 登录成功。以前登录过
+                            // 存储session。与使用用户名登录成功使用同一个东西。
+                        } else if (2 == success_code) {
+                            // 提示需要关联账号。调到另一个页面上面。
+                            var openid = res.data.openid;
+                            console.log('openid', openid);
+
+                            wx.setStorage({
+                                key: 'login_openid',
+                                data: openid,
+                            });
+
+                            // 跳转到关联页面
+                            wx.navigateTo({
+                                url: '',
+                            });
+
+                        } else {
+                            // 提示获取openid失败
+                        }
+                    },
+                    fail: function(res) {
+                        // 提示网络连接失败
+                    }
+                })
+
+
+            },
+            fail: function(res) {
+                // 提示网络连接失败
+            }
+        })
     } else {
         wx.navigateTo({
             url: 'login_page_username',
@@ -78,6 +126,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+      return {
+          
+      }
   }
 })
