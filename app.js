@@ -32,3 +32,7 @@ App({
     api_host: "https://glrh11.com"
   }
 })
+
+// login_openid 获取openid后存在这里
+// login_username 用户输入username后存在这里
+// login_ass_stage 关联第一步之后的code

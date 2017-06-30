@@ -15,7 +15,12 @@ function net_loading() {
     });
 }
 
+function hide_net_loading() {
+    wx.hideLoading();
+}
+
 module.exports = {
     net_fail: net_fail,
-    net_loading: net_loading
+    net_loading: net_loading,
+    hide_net_loading: hide_net_loading
 }

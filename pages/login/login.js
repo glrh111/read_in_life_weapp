@@ -41,10 +41,10 @@ Page({
                             var openid = res.data.openid;
                             console.log('openid', openid);
 
-                            wx.setStorage({
-                                key: 'login_openid',
-                                data: openid,
-                            });
+                            wx.setStorageSync(
+                                'login_openid',
+                                openid,
+                            );
 
                             // 跳转到关联页面
                             wx.navigateTo({
