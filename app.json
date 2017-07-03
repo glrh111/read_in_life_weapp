@@ -9,7 +9,9 @@
         "pages/login/login_page_weapp_ass",
         "pages/components/info_tip/info_tip",
         "pages/components/info_tip/info_tip",
-        "pages/login/login_page_weapp_password"
+        "pages/login/login_page_weapp_password",
+        "pages/mine/mine",
+        "pages/components/post/post_brief"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -27,7 +29,7 @@
                 "selectedIconPath": "pics/home-green.png"
             },
             {
-                "pagePath": "pages/login/login",
+                "pagePath": "pages/mine/mine",
                 "text": "我的",
                 "iconPath": "pics/mine-gray.png",
                 "selectedIconPath": "pics/mine-green.png"

@@ -1,5 +1,6 @@
 var net = require('../../utils/net.js');
-
+var util = require('../../utils/util.js');
+var session = require('../../utils/session.js');
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
   nav_to_login_page: function(e) {
     // paget_type: 1 to wechat login page
     //             2 to username login page 
+
     console.log(e);
     var login_type = parseInt(e.target.dataset.login_type);
     if (1 == login_type) {
@@ -27,7 +29,7 @@ Page({
                     method: "POST",
                     data: {
                         "js_code": js_code,
-                        "platform": 1,
+                        "platform": 2,
                         "login_type": 2
                     },
                     success: function(res) {
@@ -36,6 +38,15 @@ Page({
                         if (1 == success_code) {
                             // 登录成功。以前登录过
                             // 存储session。与使用用户名登录成功使用同一个东西。
+                            session.login_success(res);
+
+
+
+
+
+
+
+                            
                         } else if (2 == success_code) {
                             // 提示需要关联账号。调到另一个页面上面。
                             var openid = res.data.openid;
@@ -77,7 +88,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+      
   },
 
   /**

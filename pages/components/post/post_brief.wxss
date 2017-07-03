@@ -1,0 +1,52 @@
+/* post_brief.wxss */
+
+/* 阴影，北京*/
+.post_brief_view {
+    background: white;
+    margin-top: 30rpx;
+    box-shadow: 8rpx 8rpx 10rpx gray;
+    overflow: hidden;
+    border-radius: 20rpx;
+    padding: 20rpx;
+}
+
+/* 用户信息 */
+.post_brief_user_info {
+    border-bottom: 1rpx solid #eee;
+    display: block;
+    width: 100%
+}
+.post_brief_user_info>image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    padding: 0;
+    margin: 0 20rpx 10rpx 0;
+    vertical-align: middle;
+}
+/* 这是motto，只能显示一行 */
+.post_brief_user_info>view {
+    width: 580rpx;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: gray
+}
+
+/* 文章info */
+.post_brief_post_info {
+
+}
+/* 标题 */
+.post_brief_title {
+    margin: 10rpx 0;
+    font-weight: 600;
+    text-indent: 1em;
+}
+/* 文章摘要 */
+.post_brief_abstract {
+
+}

@@ -1,4 +1,10 @@
 /**index.wxss**/
+@import "../components/post/post_brief.wxss";
+
+page {
+    background: #eee;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;

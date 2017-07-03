@@ -1,0 +1,54 @@
+<!--post_brief.wxml-->
+
+<!--
+  {
+    "post_id": 2,
+    "title": null,
+    "user_info": {
+        "username": "glrh111",
+        "user_id": 4,
+        "penname": "佚名",
+        "avatar": "http://o9hjg7h8u.bkt.clouddn.com/read_in_life_icon.png",
+        "motto": null,
+        "email": ""
+    },  
+    "abstract": null,
+    "is_self": true,
+    "utime": 1498816030780
+  }
+
+------------------------------
+| 用户圆  用户motto
+| 形头像 
+-------------------------------
+| title(大)
+| abstract(如果为空，显示点击查看详情)
+--------------------------------
+background: white
+margin-bottom = 5rpx
+
+background: gray
+
+-->
+
+
+<template name="post_brief">
+
+    <view class="post_brief_view">
+
+    <!-- 用户信息： 用户头像 + motto -->
+    <view class="post_brief_user_info">
+        <image src="{{user_info.avatar}}"></image>
+        <view>{{user_info.motto}}</view>
+    </view>
+
+
+    <!-- 文章简要信息 -->
+    <view class="post_brief_post_info">
+        <view class="post_brief_title">{{title || '<无题>'}}</view>
+        <view class="post_brief_abstract">{{abstract || '点击查看文章详情'}}</view>
+    </view>
+
+    </view>
+
+</template>

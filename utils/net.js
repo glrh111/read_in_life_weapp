@@ -4,7 +4,7 @@ var util_ui = require("util_ui.js");
 
 function net_fail(message) {
     if (!message) {
-        message = '网路错误，请稍后再试'
+        message = '网络错误，请稍后再试'
     }
     util_ui.show_ok_message('网络错误', message);
 }

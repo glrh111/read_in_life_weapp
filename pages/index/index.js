@@ -1,10 +1,19 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+var util = require('../../utils/util.js');
+var session = require('../../utils/session.js');
+var net = require('../../utils/net.js');
+var wxParse = require('../../utils/wxParse/wxParse.js');
+var post_service = require('../../utils/service/post.js');
+
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {},
+
+    post_list: []
+
   },
   //事件处理函数
   bindViewTap: function() {
@@ -19,14 +28,34 @@ Page({
       })
   },
   onLoad: function () {
+    // 重新设定offset
+    wx.setStorageSync('offset_post_timeline', 0);
     console.log('onLoad')
-    var that = this
+    var that = this;
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
       //更新数据
       that.setData({
         userInfo:userInfo
       })
-    });
+    })
+  },
+
+  onReady: function() {
+        // 请求文章数据
+        
+        var that = this;
+
+        // 如果请求成功的话，将res中的post_list 设置到that上面。
+        post_service.get_timeline_post(that, 'post_list');
+        console.log('post_list', this.data.post_list);
+       
+    },
+
+  scrolltolower: function(e) {
+      var that = this;
+      post_service.get_timeline_post(that, 'post_list');
+      console.log('post_list', this.data.post_list);
   }
+
 })

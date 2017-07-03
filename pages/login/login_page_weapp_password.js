@@ -1,4 +1,7 @@
 // login_page_weapp_password.js
+var util = require("../../utils/util.js");
+var util_ui = require("../../utils/util_ui.js");
+var session = require("../../utils/session.js");
 Page({
 
   /**
@@ -8,25 +11,27 @@ Page({
       button_value: "",
       login_ass_stage: "",
       tip: {
-          content: '这是你第一次使用微信登录本平台，需要关联已有的账号或者新建账号。用户名不为空，且只包含英文字母和阿拉伯数字。',
+          content: '',
           icon_type: 'info_circle'
       },
-      password: ""
+      password: "",
+      next_step_available: false
   },
 
-  bingtap: function(e) {
+  bindtap: function(e) {
       // login_ass_code 这个确定是验证密码，还是输入密码新建账号
       var password = this.data.password;
       var username = wx.getStorageSync('login_username');
       var openid = wx.getStorageSync('login_openid');
+      var ass_url = util.get_api_url('/account/associate')
       if (3 == this.data.login_ass_stage) {
-          // 验证密码
+          // 验证密码. code=1成功验证。其他验证失败
           wx.request({
-              url: ass_url_3,
+              url: ass_url,
               data: {
                   'openid': openid,
                   'username': username,
-                  'platform': 1,
+                  'platform': 2,
                   'stage': 3,
                   'password': password
               },
@@ -34,20 +39,14 @@ Page({
               success: function (res) {
                   var code = res.data.code;
 
-                  if (2 == code) {
-                      // 这个账号虽然存在，但是没有关联，需要进行关联。
-                      // 即验证密码
-                      wx.navigateTo({
-                          url: 'login_page_weapp_password',
-                      })
-                  } else if (1 == code) {
+                  if (1 == code) {
                       // 提示验证成功。关联成功。
-
+                      // 执行登录操作
+                      ////////////////////////////////////////////////
+                      session.get_session(res);
                   } else {
-                      net.hide_net_loading();
-                      // 这个账号已经与憋得账号关联过了。
-                      // 
-                      util_ui.show_ok_message('用户名已关联', "本用户名已经与其他微信账号关联，请使用其他用户名。");
+                      // 提示验证密码失败
+                      util_ui.show_ok_message('密码错误', "密码错误");
                   }
 
               },
@@ -60,11 +59,84 @@ Page({
           
       } else if (2 == this.data.login_ass_stage) {
           // 输入新的密码
+
+          // 1. 验证密码的可用性 阿拉伯数字。英文字母。标点符号。
+          var check_result = util.check_password_available(password);
+          console.log(password);
+          if (check_result.success) {
+              // 发送请求
+              wx.request({
+                  url: ass_url,
+                  data: {
+                      'openid': openid,
+                      'username': username,
+                      'platform': 2,
+                      'stage': 2,
+                      'password': password
+                  },
+                  method: 'POST',
+                  success: function (res) {
+                      var code = res.data.code;
+
+                      if (1 == code) {
+                          // 提示验证成功。关联成功。
+                          // 执行登录操作
+                          /////////////////////////////////////////
+                          console.log('session',session.get_session(res));
+
+
+
+                      } else {
+                          // 提示密码不可规范.
+                          util_ui.show_ok_message('网络出错', "请刷新页面。");
+                      }
+
+                  },
+                  fail: function (res) {
+                      // 提示网络错误
+                      net.net_fail();
+                  }
+              })
+
+
+
+
+
+          } else {
+              // 提示密码不可用。
+              util_ui.show_ok_message('密码不可用', check_result.message);
+
+
+          }
+
+
+
+      } else {
+          // 不应该跳转到这个页面。暂时不做处理.
       }
   },
 
   bindinput: function(e) {
       // 检测用户输入
+      var value = e.detail.value;
+      this.setData({
+          password: value
+      });
+      // password不为空，那么使提交按钮可用
+      if (this.data.password) {
+          // 使按钮可用
+          this.setData({
+              next_step_available: true
+          });
+      } else {
+          // 是按钮不可用
+          this.setData({
+              next_step_available: false
+          });
+      }
+
+
+
   },
 
   /**
@@ -89,10 +161,12 @@ Page({
       var content = "";
       if (2 == login_ass_stage) {
           button_value = "设置密码";
-          content = "用户名可用。需要设置密码以完成注册。"
+          content = "用户名可用。需要设置密码以完成注册。密码只能包含英文字母，数字和标点符号。且长度不小于3。"
+          wx.setNavigationBarTitle('设置密码')
       } else {
           button_value = "验证密码";
-          content = "已经有人以此用户名注册。如需关联，需要验证密码；使用另一个用户名请点击返回。"
+          content = "已经有人以此用户名注册。如需关联，需要验证密码；使用另一个用户名请点击返回。";
+          wx.setNavigationBarTitle('验证密码');
       }
       this.setData({
           login_ass_stage: login_ass_stage,

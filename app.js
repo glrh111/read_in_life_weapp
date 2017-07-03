@@ -36,3 +36,5 @@ App({
 // login_openid 获取openid后存在这里
 // login_username 用户输入username后存在这里
 // login_ass_stage 关联第一步之后的code
+// session 这时用户的登录凭证。
+// offset_post_timeline 请求timeline_post 的数据偏移量

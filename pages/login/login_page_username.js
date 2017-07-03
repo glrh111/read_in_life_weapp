@@ -1,4 +1,7 @@
 // pages/login/login_page_username.js
+var session = require('../../utils/session.js');
+var util_ui = require('../../utils/util_ui.js');
+var net = require('../../utils/net.js');
 Page({
 
   /**
@@ -12,11 +15,7 @@ Page({
 
   log_in: function(e) {
       // 显示加载中提示框 toast
-      wx.showToast({
-          title: '登录...',
-          icon: 'loading',
-          duration: 5000
-      });
+      net.net_loading();
 
       var login_url = getApp().globalData.api_host + '/account/log_in';
       console.log(login_url);
@@ -33,27 +32,15 @@ Page({
               var code = res.data.code;
               if (1 == code) {
                   // 保存cookie相关的东西。
-                  wx.showToast({
-                      title: '登录成功',
-                      icon: 'success',
-                      duration: 3000
-                  });
+                  session.login_success(res);
               } else {
                   // 提示登录失败
-                  wx.showToast({
-                      title: '用户名或密码不可用',
-                      icon: 'success',
-                      duration: 3000
-                  });
+                  util_ui.show_ok_message('用户名或密码不可用', "用户名或密码不可用");
               }
           },
           fail: function(re) {
               // 提示网络错误
-              wx.showToast({
-                  title: '网络错误',
-                  icon: 'success',
-                  duration: 3000
-              });
+              util_ui.show_ok_message('网络错误', "网络错误");
           }
       })
   },
