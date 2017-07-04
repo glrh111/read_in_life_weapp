@@ -1,1 +1,54 @@
 /* post_edit.wxss */
+
+page {
+    background: #eee;
+}
+
+.post_edit {
+
+}
+
+.post_edit>view {
+    /*text-align: center;*/
+    /*font-size: smaller;*/
+    font-weight: 600;
+    margin-top: 30rpx;
+}
+.post_edit>view view {
+    padding-left: 2%;
+    display: inline-block;
+    /*border-bottom: 2rpx dashed #7f7f7f; */
+}
+
+
+/*.post_edit text {
+    text-decoration: underline;
+    text-decoration-style: 1px dashed #7f7f7f;
+}*/
+
+/* 输入框的样式
+宽度
+最小高度
+边框：一般为灰色；active时为绿色
+
+ */
+input,textarea {
+    /*border: 2rpx solid #7f7f7f;
+    border-radius: 10rpx;*/
+    width: 96%;
+    background: white;
+    padding: 10rpx 2%;
+}
+textarea {
+
+}
+input {
+    
+}
+
+
+
+
+.button-group {
+    margin-top: 30rpx;
+}

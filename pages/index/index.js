@@ -4,7 +4,6 @@ var app = getApp();
 var util = require('../../utils/util.js');
 var session = require('../../utils/session.js');
 var net = require('../../utils/net.js');
-var wxParse = require('../../utils/wxParse/wxParse.js');
 var post_service = require('../../utils/service/post.js');
 
 Page({

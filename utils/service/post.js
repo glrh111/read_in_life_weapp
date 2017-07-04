@@ -99,7 +99,45 @@ function get_a_post(that, field, post_id, callback) {
 }
 
 
+// 更新一篇文章的详情
+// GET /post/<post_id>  更新一篇post的详情信息
+function update_a_post(post_id, update_type, update_data, success_callback) {
+    var url = util.get_api_url('/post/' + post_id);
+    data.update_type = 1;
+    wx.request({
+        url: url,
+        method: "PUT",
+        header: {
+            'Cookie': session.get_cookie_value()
+        },
+        data: update_data,
+        success: function (res) {
+            var code = res.data.code;
+
+            if (code == 1) {
+                
+                if (success_callback) {
+                    success_callback()
+                }
+                // set another
+            } else {
+                // 提示文章更新失败，提示保存内容.
+                util_ui.show_ok_message("更新失败", "请妥善保存输入的内容并重新进入本小程序");
+            }
+        },
+        fail: function (res) {
+            net.net_fail();
+
+        },
+        complete: function (res) {
+            net.hide_net_loading();
+        }
+    })
+}
+
+
 module.exports = {
     get_timeline_post: get_timeline_post, 
-    get_a_post: get_a_post
+    get_a_post: get_a_post,
+    update_a_post: update_a_post
 }

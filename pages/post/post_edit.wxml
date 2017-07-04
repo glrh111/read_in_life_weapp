@@ -15,27 +15,28 @@ abstract<area>
 
 
     <!-- 编辑title -->
-    <label for="title">标题</label>
-    <textarea id="title" value="{{title}}" />
+    <view><view>标题</view></view>
+    <input bindinput="bindinput" data-submit_type="title" id="title" maxlength="-1" value="{{title}}" />
 
     <!-- 编辑abstact -->
-    <label for="abstact">摘要(显示在文章列表里)</label>
-    <textarea id="abstact" maxlength="-1" value="{{abstact}}" />
+    <view><view>摘要(显示在文章列表里)</view></view>
+    <textarea bindinput="bindinput" data-submit_type="abstract" id="abstact" maxlength="-1" value="{{abstract}}" auto-height="true" />
 
     <!-- 编辑content -->
-    <label for="content">内容</label>
-    <textarea id="content" maxlength="-1" value="{{content}}" />
+    <view><view>内容(支持Markdown格式)</view></view>
+    <textarea bindinput="bindinput" data-submit_type="content" id="content" maxlength="-1" value="{{content}}" auto-height="true" />
 
 <!-- 完成和取消按钮 -->
-    <button class="classname" bindtap="commit" size="default" type="primary" data-commit_type="1">
-        提交修改
-    </button>
-    <button class="classname" bindtap="cancel" size="default" type="warn">
-        取消修改
-    </button>
+    <view class="button-group">
+        <button class="classname" bindtap="commit" size="default" type="primary" data-commit_type="1">
+            提交修改
+        </button>
+        <button class="classname" bindtap="cancel" size="default" type="warn">
+            取消修改
+        </button>
+
+    </view>
 
 
 
 </view>
-
-
