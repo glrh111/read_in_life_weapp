@@ -1,18 +1,25 @@
-// post_brief.js
+// post_edit.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+      look_post_id: null,
+      post_info: {},
+      title: '',
+      content: '',
+      abstract: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log("js 确定加载了。")
+      var look_post_id = wx.getStorageSync('look_post_id');
+      this.setData({
+          look_post_id: look_post_id
+      });
   },
 
   /**
@@ -20,6 +27,15 @@ Page({
    */
   onReady: function () {
   
+  },
+
+  // 两个提交按钮    
+  commit: function(e) {
+    
+  },
+
+  cancel: function(e) {
+
   },
 
   /**

@@ -11,7 +11,9 @@
         "pages/components/info_tip/info_tip",
         "pages/login/login_page_weapp_password",
         "pages/mine/mine",
-        "pages/components/post/post_brief"
+        "pages/components/post/post_brief",
+        "pages/post/post_view",
+        "pages/post/post_edit"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -1,0 +1,55 @@
+/* post_view.wxss */
+
+@import "../../utils/wemark/wemark.wxss";
+
+/* 整个文章块儿
+margin: 30rpx 20rpx
+ */
+.post_detailed {
+    margin: 30rpx 20rpx;
+}
+
+.post_title {
+    /*text-align: center;*/
+    font-weight: 600;
+    font-size: x-large
+    
+}
+
+
+.post_other_info {
+    font-size: smaller;
+    /*text-align: center;*/
+    color: gray;
+    margin-bottom: 20rpx;
+}
+/* 笔名 */
+.post_other_info_penname {
+    
+}
+
+.post_other_info view {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20rpx
+}
+
+.post_other_info>image {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 100%;
+    padding: 0;
+    /*margin-left: 20rpx;*/
+    vertical-align: middle;
+    box-shadow: none;
+}
+/* 编辑 
+绿色的字，绿色的框
+*/
+.post_other_info_edit {
+    font-size: smaller;
+    color: #62b900;
+    border-radius: 10rpx ;
+    border: 1rpx solid #62b900;
+    padding: 0 5rpx;
+}

@@ -9,7 +9,7 @@
 style="height: 100vh" scroll-y="true"
 >
     <!-- 文章列表 -->
-    <block class="classname" wx:for="{{post_list}}" wx:key="">
+    <view bindtap="bindposttap" data-post_id="{{item.post_id}}" class="classname" wx:for="{{post_list}}" wx:key="">
         <template is="post_brief" data="{{...item}}"/>
-    </block>
+    </view>
 </scroll-view>

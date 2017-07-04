@@ -1,0 +1,41 @@
+<!--post_edit.wxml
+编辑文章
+title<input>
+content<area>
+abstract<area>
+三者均不能为空
+
+权限编辑应该在浏览界面，增加两个按钮：
+撤回发布；发布
+-->
+
+<!-- 一个大的区域 -->
+
+<view class="post_edit">
+
+
+    <!-- 编辑title -->
+    <label for="title">标题</label>
+    <textarea id="title" value="{{title}}" />
+
+    <!-- 编辑abstact -->
+    <label for="abstact">摘要(显示在文章列表里)</label>
+    <textarea id="abstact" maxlength="-1" value="{{abstact}}" />
+
+    <!-- 编辑content -->
+    <label for="content">内容</label>
+    <textarea id="content" maxlength="-1" value="{{content}}" />
+
+<!-- 完成和取消按钮 -->
+    <button class="classname" bindtap="commit" size="default" type="primary" data-commit_type="1">
+        提交修改
+    </button>
+    <button class="classname" bindtap="cancel" size="default" type="warn">
+        取消修改
+    </button>
+
+
+
+</view>
+
+

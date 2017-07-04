@@ -54,8 +54,27 @@ Page({
 
   scrolltolower: function(e) {
       var that = this;
-      post_service.get_timeline_post(that, 'post_list');
+
+      var is_refreshing = wx.getStorageSync('timeline_bottom_is_refreshing');
+      if (!is_refreshing) {
+          wx.setStorageSync('timeline_bottom_is_refreshing', true);
+          post_service.get_timeline_post(that, 'post_list');
+          setTimeout(function() {
+              wx.setStorageSync('timeline_bottom_is_refreshing', false);
+          }, 1000);
+      }
       console.log('post_list', this.data.post_list);
+  },
+
+  // 将postid存储下来，然后调到post详情界面
+  bindposttap: function(e) {
+      console.log("点击事件发生在", e, e.currentTarget.dataset.post_id);
+      var post_id = e.currentTarget.dataset.post_id;
+      // 存储起来, 然后跳转
+      wx.setStorageSync('look_post_id', post_id);
+      wx.navigateTo({
+          url: '/pages/post/post_view',
+      })
   }
 
 })

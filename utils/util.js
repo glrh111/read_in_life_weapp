@@ -16,6 +16,18 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+// 格式化timestamp。末尾为毫秒
+function format_timestamp(timestamp) {
+    if (!timestamp) {
+        return ''
+    } else {
+        var new_date = new Date();
+        new_date.setTime(timestamp);
+        return formatTime(new_date)
+    }
+
+}
+
 // 检查用户输入的用户名是否是有效的
 // 1. 不为空
 // 2. 只包含英文字母和阿拉伯数字
@@ -110,6 +122,9 @@ function skip_to_before_login_path() {
 
 module.exports = {
   formatTime: formatTime,
+
+  format_timestamp: format_timestamp,
+
   check_username_available: check_username_available,
   check_password_available: check_password_available,
   get_api_url: get_api_url,

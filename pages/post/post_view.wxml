@@ -1,0 +1,40 @@
+<!--post_view.wxml-->
+<import src="../../utils/wemark/wemark.wxml"/>
+<!-- 一篇文章的详细信息 -->
+
+<view class="post_detailed">
+
+    <!-- 文章标题 -->
+    <view class="post_title">
+        {{post_info.title}}
+    </view>
+
+    <!-- 用户头像，文章penname，发布时间，编辑按钮 -->
+    <view class="post_other_info">
+
+        <!-- 用户头像 -->
+        <image src="{{post_info.user_info.avatar}}"></image>
+
+        <!-- penname -->
+        <view class="post_other_info_penname">
+            {{post_info.user_info.penname}}
+        </view>
+
+        <!-- 更新时间 -->
+        <view class="post_other_info_date">
+            {{datestr}}
+        </view>
+        
+        <!-- 编辑按钮 -->
+        <view bindtap="bingedittap" wx:if="{{post_info.is_self}}" class="post_other_info_edit">
+            编辑
+        </view>
+    </view>
+
+    <!-- 文章内容 -->
+    <view class="post_content">
+        <template is="wemark" data="{{...wemark}}"/>
+    </view>
+
+</view>
+

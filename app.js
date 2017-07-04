@@ -38,3 +38,9 @@ App({
 // login_ass_stage 关联第一步之后的code
 // session 这时用户的登录凭证。
 // offset_post_timeline 请求timeline_post 的数据偏移量
+
+
+// timeline_bottom_is_refreshing  由于触底刷新事件bug，所以手动限制触发频率。设置为true或者false
+
+
+// look_post_id  这个表示，在postlist上点击了哪一个post_id, 到详情页面的时候，取出来显示。
