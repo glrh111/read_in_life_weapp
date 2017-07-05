@@ -13,18 +13,17 @@ abstract<area>
 
 <view class="post_edit">
 
-
     <!-- 编辑title -->
     <view><view>标题</view></view>
-    <input bindinput="bindinput" data-submit_type="title" id="title" maxlength="-1" value="{{title}}" />
+    <input bindblur="bindinput" data-submit_type="title" id="title" maxlength="-1" value="{{title}}" focus="false" />
 
     <!-- 编辑abstact -->
     <view><view>摘要(显示在文章列表里)</view></view>
-    <textarea bindinput="bindinput" data-submit_type="abstract" id="abstact" maxlength="-1" value="{{abstract}}" auto-height="true" />
+    <textarea bindblur="bindinput" data-submit_type="abstract" id="abstact" maxlength="-1" value="{{abstract}}" auto-height="true" focus="false" />
 
     <!-- 编辑content -->
     <view><view>内容(支持Markdown格式)</view></view>
-    <textarea bindinput="bindinput" data-submit_type="content" id="content" maxlength="-1" value="{{content}}" auto-height="true" />
+    <textarea bindblur="bindinput" data-submit_type="content" id="content" maxlength="-1" value="{{content}}" auto-height="true" focus="false" />
 
 <!-- 完成和取消按钮 -->
     <view class="button-group">
@@ -36,6 +35,7 @@ abstract<area>
         </button>
 
     </view>
+
 
 
 

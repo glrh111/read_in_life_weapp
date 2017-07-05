@@ -12,7 +12,11 @@ Page({
       look_post_id: null,
       post_info: { user_info:{}},
       datestr: '',
-      wemark: {}
+      wemark: {},
+
+      // 发布 转为私密
+      publish_word: '',
+      // is_available_to_other: '',
   },
 
   /**
@@ -45,13 +49,87 @@ Page({
           that.setData({
               datestr: util.format_timestamp(that.data.post_info.utime)
           });
+          // 处理发布按钮
+          var is_available_to_other = that.data.post_info.is_available_to_other;
+          var publish_word = '';
+          if (is_available_to_other) {
+              // 转为私密
+              publish_word = '转为私密';
+          } else {
+              // 发布
+              publish_word = '发布';
+          }
+          that.setData({
+              publish_word: publish_word
+          })
+
+
       });
   },
   // 编辑按钮 navigate to 某个页面
-  bingedittap: function(e) {
+  bindedittap: function(e) {
       wx.redirectTo({
           url: 'post_edit',
       });
+  },
+
+  // 文章发布状态按钮
+  bindpublishtap: function(e) {
+      // is_available_to_other
+      var that = this;
+      var is_available_to_other = that.data.post_info.is_available_to_other;
+      
+      var title = '';
+      var confirmText = '';
+      var content = '';
+      if (is_available_to_other) {
+          title = '转为私密';
+          confirmText = '转为私密';
+          content = '文章转为私密后，可在我的页面查看。'
+      } else {
+          title = '发布';
+          confirmText = '发布';
+          content = '文章发布后，可供其他人查看。'
+      }
+
+      // 显示提示框
+      wx.showModal({
+          title: title,
+          content: content,
+          showCancel: true,
+          cancelText: '取消',
+          confirmText: confirmText,
+          success: function (e) {
+              if (e.confirm) {
+                  // 执行更新操作
+                  post_service.update_a_post(
+                      that.data.look_post_id,
+                      2,
+                      {
+                          available_to_other: !is_available_to_other
+                      },
+                      function () {
+                          // 显示更新成功按钮，过一段时间，跳转到该post查看界面
+                          wx.showToast({
+                              title: title + '成功',
+                              icon: 'success',
+                              duration: 1000,
+                              complete: function () {
+                                  setTimeout(function () {
+                                      wx.redirectTo({
+                                          url: 'post_view',
+                                      })
+                                  }, 1000);
+
+                              }
+                          });
+                      }
+                  )
+              } // end if (e.confirm)
+
+          }
+      })
+
   },
 
   /**

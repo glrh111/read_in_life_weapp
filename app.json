@@ -31,6 +31,12 @@
                 "selectedIconPath": "pics/home-green.png"
             },
             {
+                "pagePath": "pages/login/login",
+                "text": "新文章",
+                "iconPath": "pics/new-gray.png",
+                "selectedIconPath": "pics/new-green.png"
+            },
+            {
                 "pagePath": "pages/mine/mine",
                 "text": "我的",
                 "iconPath": "pics/mine-gray.png",

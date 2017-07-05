@@ -26,9 +26,15 @@
         </view>
         
         <!-- 编辑按钮 -->
-        <view bindtap="bingedittap" wx:if="{{post_info.is_self}}" class="post_other_info_edit">
+        <view bindtap="bindedittap" wx:if="{{post_info.is_self}}" class="post_other_info_edit">
             编辑
         </view>
+
+        <!-- 发布与撤销发布按钮 -->
+        <view bindtap="bindpublishtap" wx:if="{{post_info.is_self}}" class="post_other_info_edit">
+            {{publish_word}}
+        </view>
+
     </view>
 
     <!-- 文章内容 -->

@@ -4,6 +4,7 @@ var post_service = require("../../utils/service/post.js");
 var wemark = require("../../utils/wemark/wemark.js");
 var util = require("../../utils/util.js");
 var util_ui = require("../../utils/util_ui.js");
+var net = require('../../utils/net.js');
 
 Page({
 
@@ -13,6 +14,7 @@ Page({
   data: {
       look_post_id: null,
       post_info: {},
+      focus: false,
       title: '',
       content: '',
       abstract: ''
@@ -66,7 +68,6 @@ Page({
               content: e.detail.value
           })
       }
-      console.log(that.data);
   },
 
   /**
@@ -82,35 +83,71 @@ Page({
       //   title: '',
       //   content: '',
       //   abstract: ''
-      if (!(this.data.title && this.data.content && this.data.abstract)) {
-          util_ui.show_ok_message("缺少信息", "以上三项均不能为空。")
-          return false
-      } 
-      post_service.update_a_post(
-          this.data.look_post_id, 
-          1, 
-          {
-              title: this.data.title,
-              content: this.data.content,
-              abstract: this.data.abstract
-          },
-          function() {
-              // 显示更新成功按钮，过一段时间，跳转到该post查看界面
-              wx.showToast({
-                  title: '更新成功',
-                  duration: 1000,
-                  success: function() {
-                      wx.redirectTo({
-                          url: 'post_view',
-                      })
-                  }
-              });
-          }
-      )
+      // 首先得让上面三个输入框都失去焦点。 为了触发blur事件
+      this.setData({
+          focus: false
+      });
+
+      // 这里需要设置一个timeout。等待ui更新。
+      // 显示网络正在加载中.
+      net.net_loading();
+      var that = this;
+      setTimeout(function() {
+      
+          if (!(that.data.title && that.data.content && that.data.abstract)) {
+                util_ui.show_ok_message("缺少信息", "以上三项均不能为空。")
+                return false
+            } 
+            
+            post_service.update_a_post(
+                that.data.look_post_id, 
+                1, 
+                {
+                    title: that.data.title,
+                    content: that.data.content,
+                    abstract: that.data.abstract
+                },
+                function() {
+                    // 显示更新成功按钮，过一段时间，跳转到该post查看界面
+                    wx.showToast({
+                        title: '更新成功',
+                        icon: 'success',
+                        duration: 1000,
+                        complete: function() {
+                            setTimeout(function(){
+                                wx.redirectTo({
+                                    url: 'post_view',
+                                })
+                            }, 1000);
+                            
+                        }
+                    });
+                }
+            )
+      }, 1000);
   },
 
+  // 取消编辑
   cancel: function(e) {
-
+      // 提示用户保存内容
+      wx.showModal({
+          title: '取消编辑',
+          content: '请妥善保存编辑内容',
+          showCancel: true,
+          cancelText: '离开',
+          confirmText: '留下',
+          success: function(e) {
+              if (e.confirm) {
+                  // 留下. 什么都不干
+              } else {
+                  // 离开
+                  wx.redirectTo({
+                      url: 'post_view',
+                  })
+              }
+              
+          }
+      })
   },
 
   /**

@@ -100,10 +100,10 @@ function get_a_post(that, field, post_id, callback) {
 
 
 // 更新一篇文章的详情
-// GET /post/<post_id>  更新一篇post的详情信息
+// PUT /post/<post_id>  更新一篇post的详情信息
 function update_a_post(post_id, update_type, update_data, success_callback) {
     var url = util.get_api_url('/post/' + post_id);
-    data.update_type = 1;
+    update_data.update_type = update_type;
     wx.request({
         url: url,
         method: "PUT",
@@ -128,9 +128,6 @@ function update_a_post(post_id, update_type, update_data, success_callback) {
         fail: function (res) {
             net.net_fail();
 
-        },
-        complete: function (res) {
-            net.hide_net_loading();
         }
     })
 }

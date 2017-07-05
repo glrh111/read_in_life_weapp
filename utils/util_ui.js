@@ -9,6 +9,24 @@ function show_ok_message(title,message) {
     })
 }
 
+// 提示成功. 不好用。直接使用这个wx
+function show_success_message(title, success_callback, duration) {
+    if (!title) {
+        title = '操作成功';
+    }
+    if (!duration) {
+        duration = 1000;
+    }
+    if (!success_callback) {
+        success_callback = function(){};
+    }
+    wx.showToast({
+        title: title,
+        duration: duration,
+        success: success_callback()
+    });
+}
+
 
 module.exports = {
     show_ok_message: show_ok_message
