@@ -96,6 +96,8 @@ Page({
       
           if (!(that.data.title && that.data.content && that.data.abstract)) {
                 util_ui.show_ok_message("缺少信息", "以上三项均不能为空。")
+                
+                net.hide_net_loading();
                 return false
             } 
             
@@ -117,7 +119,7 @@ Page({
                             setTimeout(function(){
                                 wx.redirectTo({
                                     url: 'post_view',
-                                })
+                                });
                             }, 1000);
                             
                         }
@@ -147,7 +149,7 @@ Page({
               }
               
           }
-      })
+      });
   },
 
   /**

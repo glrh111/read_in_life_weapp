@@ -33,6 +33,9 @@ Page({
               if (1 == code) {
                   // 保存cookie相关的东西。
                   session.login_success(res);
+                  wx.switchTab({
+                      url: '/pages/index/index',
+                  });
               } else {
                   // 提示登录失败
                   util_ui.show_ok_message('用户名或密码不可用', "用户名或密码不可用");

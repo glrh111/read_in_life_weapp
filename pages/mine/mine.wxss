@@ -1,1 +1,120 @@
 /* mine.wxss */
+@import "../components/post/post_brief.wxss";
+
+page {
+    background: #eee;
+}
+
+.total_view {
+    width: 100%;
+    overflow: hidden;
+}
+/**********************************/
+/* 用户信息区域 user_info */
+/**********************************/
+.user_info {
+    border-bottom: 1rpx solid #eee;
+    display: block;
+    width: 100%;
+    margin-top: 30rpx;
+    background: #fff;
+    padding: 20rpx;
+}
+
+.user_info>image {
+    margin-left: 30rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    padding: 0;
+    margin: 0 20rpx 10rpx 0;
+    vertical-align: middle;
+    box-shadow: none;
+}
+
+/* 这是motto，只能显示一行 */
+.user_info_two_line>view {
+    width: 580rpx;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: gray;
+    font-size: smaller
+}
+
+/* 头像右边的两行文字 */
+.user_info_two_line {
+    display: inline-block;
+    vertical-align: middle;
+}
+.user_info_two_line>view {
+    width: 550rpx;
+    display: block;
+
+    height: 100%;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: gray;
+    font-size: smaller
+}
+/* 最右边的箭头 */
+.user_info_arrow {
+    display: inline-block;
+}
+.user_info_arrow>image {
+    display: inline-block;
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+}
+
+
+/**********************************/
+/* 下面的一块儿区域  */
+/**********************************/
+.post_list_group {
+    margin-top: 30rpx;
+    background: #fff;
+}
+.post_list_tabbar {
+    padding: 10rpx 0;    
+    display: table;
+    width: 100%;
+
+}
+
+.post_list_item {
+    display: table-cell;
+    text-align: center
+}
+
+.post_list_item_active {
+    border-bottom: 5rpx solid #3CC51F;
+}
+
+.post_list_content {
+    min-height: 50rpx;
+    border-top: 1rpx solid #eee;
+}
+
+.post_list_content_item {
+    border-top: 3rpx solid #eee;
+    border-bottom: 3rpx solid #eee;
+}
+
+.post_brief_view  {
+    margin-top: 0;
+}
+
+.post_list_content_notice {
+    text-align: center;
+}
+
+.post_list_content_notice>view {
+    display: inline-block;
+    vertical-align: middle;
+}

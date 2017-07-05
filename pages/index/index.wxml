@@ -5,6 +5,10 @@
 <!-- 引入文章模板 -->
 <import src="../components/post/post_brief.wxml"/>
 
+<button class="classname" bindtap="refresh" size="default" type="default">
+  刷新
+</button>
+
 <scroll-view enable-back-to-top="true" bindscrolltolower="scrolltolower"
 style="height: 100vh" scroll-y="true"
 >

@@ -3,7 +3,7 @@
 /* 阴影，北京*/
 .post_brief_view {
     background: white;
-    margin-top: 30rpx;
+    margin-bottom: 30rpx;
     /*box-shadow: 8rpx 8rpx 10rpx gray;*/
     overflow: hidden;
     /*border-radius: 20rpx;*/

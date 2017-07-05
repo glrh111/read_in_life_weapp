@@ -6,7 +6,7 @@
 margin: 30rpx 20rpx
  */
 .post_detailed {
-    margin: 30rpx 20rpx;
+    margin: 20rpx 15rpx;
 }
 
 .post_title {
@@ -31,7 +31,7 @@ margin: 30rpx 20rpx
 .post_other_info view {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 20rpx
+    margin-left: 15rpx
 }
 
 .post_other_info>image {

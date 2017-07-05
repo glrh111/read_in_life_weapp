@@ -39,7 +39,10 @@ Page({
                             // 登录成功。以前登录过
                             // 存储session。与使用用户名登录成功使用同一个东西。
                             session.login_success(res);
-
+                            // 跳转到index
+                            wx.switchTab({
+                                url: '/pages/index/index',
+                            });
 
 
 

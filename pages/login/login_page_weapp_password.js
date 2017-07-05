@@ -43,7 +43,12 @@ Page({
                       // 提示验证成功。关联成功。
                       // 执行登录操作
                       ////////////////////////////////////////////////
-                      session.get_session(res);
+                      session.login_success(res);
+                      // 跳转到index
+                      wx.switchTab({
+                          url: '/pages/index/index',
+                      })
+
                   } else {
                       // 提示验证密码失败
                       util_ui.show_ok_message('密码错误', "密码错误");
@@ -83,7 +88,11 @@ Page({
                           // 执行登录操作
                           /////////////////////////////////////////
                           console.log('session',session.get_session(res));
-
+                          session.login_success(res);
+                          // 跳转到index
+                          wx.redirectTo({
+                              url: '/pages/index/index',
+                          })
 
 
                       } else {

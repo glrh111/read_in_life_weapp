@@ -1,0 +1,28 @@
+/* user_info.wxss */
+
+.user_info {
+    border-bottom: 1rpx solid #eee;
+    display: block;
+    width: 100%
+}
+.user_info>image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 100%;
+    padding: 0;
+    margin: 0 20rpx 10rpx 0;
+    vertical-align: middle;
+    box-shadow: none;
+}
+/* 这是motto，只能显示一行 */
+.user_info>view {
+    width: 580rpx;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: gray;
+    font-size: smaller
+}

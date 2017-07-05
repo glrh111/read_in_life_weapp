@@ -32,3 +32,8 @@ image {
     /*border: solid 2px #aaa;*/
     box-shadow: 2px 3px 3px #aaa; 
 }
+
+button {
+    /*margin-bottom: -20rpx;*/
+    font-size: smaller;
+}

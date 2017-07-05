@@ -1,2 +1,50 @@
 <!--mine.wxml-->
-<text>mine.wxml</text>
+<!--user_info.wxml-->
+<import src="../components/post/post_brief.wxml"/>
+
+<view class="total_view">
+
+<!-- 上面是用户的头像信息 点击可以进入修改 -->
+<view class="user_info" bindtap="bindusertap">
+    <image src="{{user_info.avatar}}"></image>
+    <view class="user_info_two_line">
+        <view>{{user_info.penname}}</view>
+        <view>{{user_info.motto}}</view>  
+    </view>
+    <!-- 最右边的箭头 -->
+    <view class="user_info_arrow">
+        <image src="/pics/arrow-right.png"></image>
+    </view>
+</view>
+
+<!-- 下面是用户的两个文章列表。一个是发表的，一个是没有发表的。 -->
+<view class="post_list_group">
+
+   <!-- 上面的tabbar -->
+   <view class="post_list_tabbar">
+      <view class="post_list_item" wx:for="{{type_list}}" wx:key=""
+            data-publish_type="{{item}}" bindtap="bindtabtap"> 
+          {{ tab_cn[item] }} 
+      </view>
+   </view>
+
+   <!-- 文章列表 -->
+   <view class="post_list_content">
+       <view wx:for="{{post_list[selected_type]}}" 
+             class="post_list_content_item" 
+             wx:key=""
+             data-post_id="{{item.post_id}}"
+             bindtap="bindposttap">
+           <template is="post_brief" data="{{...item}}"/>
+       </view>
+
+       <view class="post_list_content_notice" wx:if="{{post_list[selected_type].length==0}}">
+           <view>
+           没有内容
+           </view>
+       </view>
+   </view>
+
+</view>
+
+</view>

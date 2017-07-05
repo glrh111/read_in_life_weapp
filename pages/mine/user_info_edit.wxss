@@ -1,0 +1,15 @@
+/* user_info_edit.wxss */
+
+page {
+    background: #eee;
+}
+
+.input-group {
+    background: #fff;
+    margin-top: 30rpx;
+}
+
+/* 下面的两个按钮 */
+.button-group {
+    margin-top: 30rpx;
+}

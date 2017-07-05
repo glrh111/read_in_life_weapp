@@ -1,0 +1,50 @@
+<!--user_info_edit.wxml-->
+<!-- 编辑个人信息的页面 -->
+<view class="weui-cells weui-cells_after-title input-group">
+    <!-- penname -->
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">penname</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindinput" class="weui-input" placeholder="penname"
+                   data-fieldname="penname" value="{{penname}}" />
+        </view>
+    </view>
+    <!-- motto -->
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">motto</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindinput" class="weui-input" placeholder="motto"                           data-fieldname="motto" value="{{motto}}"  />
+        </view>
+    </view>
+
+    <!-- avatar -->
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">avatar</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindinput" class="weui-input" placeholder="avatar"                          data-fieldname="avatar" value="{{avatar}}"  />
+        </view>
+    </view>
+
+</view>
+
+
+<!-- 完成和取消按钮 -->
+<view class="button-group">
+    <button class="classname" bindtap="commit" size="default" type="primary" data-commit_type="1">
+        提交修改
+    </button>
+    <button class="classname" bindtap="cancel" size="default" type="warn">
+        取消修改
+    </button>
+
+    <button class="classname" bindtap="logout" size="default" type="warn">
+        退出登录
+    </button>
+
+</view>

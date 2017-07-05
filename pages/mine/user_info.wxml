@@ -1,0 +1,14 @@
+<!--user_info.wxml-->
+<text>user_info.wxml</text>
+
+<!-- 上面是用户的头像信息 点击可以进入修改 -->
+<view class="user_info">
+    <image src="{{user_info.avatar}}"></image>
+    <view>{{user_info.motto}}</view>
+    <view>{{user_info.penname}}发表了一篇文章</view>
+</view>
+
+
+
+
+<!-- 下面是用户的两个文章列表。一个是发表的，一个是没有发表的。 -->

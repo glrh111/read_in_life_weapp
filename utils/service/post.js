@@ -3,10 +3,6 @@ var util_ui = require('../util_ui.js');
 var session = require('../session.js');
 var net = require('../net.js');
 
-
-
-
-// 获取用户【本人】的信息
 // GET /post/  timeline上的全部文章
 // key_name: offset_post_timeline
 // offset, start 的处理：存储到localstorage里边。
@@ -35,17 +31,19 @@ function get_timeline_post(that, field) {
             if (code == 1) {
                 var obj = {};
                 var ever_data = that.data[field];
+                // 重新刷新的时候，offset=0.清空以前的数据
+                if (0 == offset) {
+                    ever_data = [];
+                }
                 if (!ever_data) {
                     ever_data = []
                 }
 
                 var new_post_list = res.data.post_list;
-
-
+                
                 ever_data = ever_data.concat(new_post_list);
                 obj[field] = ever_data;
                 that.setData(obj);
-                console.log('that', that, ever_data);
                 // set another
                 wx.setStorageSync('offset_post_timeline', offset + new_post_list.length);
             } else {
@@ -58,6 +56,47 @@ function get_timeline_post(that, field) {
         },
         complete: function(res) {
             net.hide_net_loading();
+        }
+    })
+}
+
+// 已登录用户本人的文章列表
+// GET /user/post  已登录用户本人的文章列表
+function get_user_post(that, field, success_callback, fail_callback) {
+    var url = util.get_api_url('/user/post/');
+    wx.request({
+        url: url,
+        method: "GET",
+        header: {
+            'Cookie': session.get_cookie_value()
+        },
+        success: function (res) {
+            var code = res.data.code;
+
+            if (code == 1) {
+                // 请求成功
+                var post_list = res.data.post_list;
+                var obj = {};
+                obj[field] = post_list;
+                that.setData(obj);
+                if (success_callback) {
+                    success_callback();
+                }
+            } else {
+                // 提示没有登录，并且跳转到 登录 或者 首页
+                if (fail_callback) {
+                    fail_callback();
+                }
+            }
+        },
+        fail: function (res) {
+            net.net_fail();
+            // skip to index
+            setTimeout(function () {
+                wx.navigateTo({
+                    url: '/pages/index/index',
+                })
+            }, 1000);
         }
     })
 }
@@ -116,6 +155,7 @@ function update_a_post(post_id, update_type, update_data, success_callback) {
 
             if (code == 1) {
                 
+
                 if (success_callback) {
                     success_callback()
                 }
@@ -132,9 +172,49 @@ function update_a_post(post_id, update_type, update_data, success_callback) {
     })
 }
 
+// 新建一篇文章
+// PUT /post/  新建一篇post。里边的所有内容都是空的。
+function new_a_post(success_callback, fail_callback) {
+    var url = util.get_api_url('/post/');
+    wx.request({
+        url: url,
+        method: "POST",
+        header: {
+            'Cookie': session.get_cookie_value()
+        },
+        success: function (res) {
+            var code = res.data.code;
+            
+            if (code == 1) {
+                // 新建成功
+                var post_id = res.data.post.post_id;
+                if (success_callback) {
+                    success_callback(post_id);
+                }
+            } else {
+                // 提示没有登录，并且跳转到
+                if (fail_callback) {
+                    fail_callback();
+                }
+            }
+        },
+        fail: function (res) {
+            net.net_fail();
+            // skip to index
+            setTimeout(function(){
+                wx.navigateTo({
+                    url: '/pages/index/index',
+                })
+            }, 1000);
+        }
+    })
+}
+
 
 module.exports = {
     get_timeline_post: get_timeline_post, 
     get_a_post: get_a_post,
-    update_a_post: update_a_post
+    update_a_post: update_a_post,
+    new_a_post: new_a_post,
+    get_user_post: get_user_post
 }

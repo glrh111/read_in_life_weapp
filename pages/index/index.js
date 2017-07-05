@@ -73,7 +73,15 @@ Page({
       wx.setStorageSync('look_post_id', post_id);
       wx.navigateTo({
           url: '/pages/post/post_view',
-      })
+      });
+  },
+
+
+  // 刷新
+  refresh: function() {
+      var that = this;
+      wx.setStorageSync('offset_post_timeline', 0);
+      post_service.get_timeline_post(that, 'post_list');
   }
 
 })

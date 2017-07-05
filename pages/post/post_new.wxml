@@ -1,0 +1,12 @@
+<!--post_new.wxml-->
+<!-- 
+
+这个页面只是新建一篇文章. POST /post/
+
+如果需要登录，会提示用户登录
+
+如果新建成功，redirect to /post_edit.
+
+如果网络错误，redirect to index
+
+ -->

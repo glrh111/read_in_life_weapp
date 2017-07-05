@@ -35,6 +35,10 @@
             {{publish_word}}
         </view>
 
+        <view bindtap="bindback" class="post_other_info_edit">
+            返回
+        </view>
+
     </view>
 
     <!-- 文章内容 -->

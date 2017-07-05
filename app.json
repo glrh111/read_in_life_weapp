@@ -6,14 +6,15 @@
         "pages/logs/logs",
         "pages/login/login",
         "pages/login/login_page_weapp_ass",
-        "pages/login/login_page_weapp_ass",
-        "pages/components/info_tip/info_tip",
         "pages/components/info_tip/info_tip",
         "pages/login/login_page_weapp_password",
         "pages/mine/mine",
         "pages/components/post/post_brief",
         "pages/post/post_view",
-        "pages/post/post_edit"
+        "pages/post/post_edit",
+        "pages/post/post_new",
+        "pages/mine/user_info",
+        "pages/mine/user_info_edit"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -31,7 +32,7 @@
                 "selectedIconPath": "pics/home-green.png"
             },
             {
-                "pagePath": "pages/login/login",
+                "pagePath": "pages/post/post_new",
                 "text": "新文章",
                 "iconPath": "pics/new-gray.png",
                 "selectedIconPath": "pics/new-green.png"
@@ -43,7 +44,7 @@
                 "selectedIconPath": "pics/mine-green.png"
             }
         ],
-        "color": "gray",
+        "color": "#7f7f7f",
         "selectedColor": "#62b900"
     }
 }

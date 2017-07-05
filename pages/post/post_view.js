@@ -132,6 +132,19 @@ Page({
 
   },
 
+  bindback: function(e) {
+      // 如果c_p<=1，那么返回首页
+      var c_p = getCurrentPages();
+
+      if (c_p.length>=2) {
+          wx.navigateBack({});
+      } else {
+          wx.switchTab({
+              url: '/pages/index/index',
+          });
+      }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
