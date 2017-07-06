@@ -103,7 +103,7 @@ Page({
           title: '成功退出',
       });
       setTimeout(function () {
-          wx.switchTab({
+          wx.reLaunch({
               url: '/pages/index/index',
           });
       }, 1000);

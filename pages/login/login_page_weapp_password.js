@@ -45,7 +45,7 @@ Page({
                       ////////////////////////////////////////////////
                       session.login_success(res);
                       // 跳转到index
-                      wx.switchTab({
+                      wx.reLaunch({
                           url: '/pages/index/index',
                       })
 
@@ -90,9 +90,9 @@ Page({
                           console.log('session',session.get_session(res));
                           session.login_success(res);
                           // 跳转到index
-                          wx.redirectTo({
+                          wx.reLaunch({
                               url: '/pages/index/index',
-                          })
+                          });
 
 
                       } else {
@@ -170,12 +170,16 @@ Page({
       var content = "";
       if (2 == login_ass_stage) {
           button_value = "设置密码";
-          content = "用户名可用。需要设置密码以完成注册。密码只能包含英文字母，数字和标点符号。且长度不小于3。"
-          wx.setNavigationBarTitle('设置密码')
+          content = "用户名可用。需要设置密码以完成注册。密码只能包含英文字母，数字和标点符号。且长度不小于3。";
+          wx.setNavigationBarTitle({
+              title: '设置密码',
+          })
       } else {
           button_value = "验证密码";
           content = "已经有人以此用户名注册。如需关联，需要验证密码；使用另一个用户名请点击返回。";
-          wx.setNavigationBarTitle('验证密码');
+          wx.setNavigationBarTitle({
+              title: '验证密码',
+          });
       }
       this.setData({
           login_ass_stage: login_ass_stage,

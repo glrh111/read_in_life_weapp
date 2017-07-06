@@ -33,7 +33,7 @@
             },
             {
                 "pagePath": "pages/post/post_new",
-                "text": "新文章",
+                "text": "新攻略",
                 "iconPath": "pics/new-gray.png",
                 "selectedIconPath": "pics/new-green.png"
             },

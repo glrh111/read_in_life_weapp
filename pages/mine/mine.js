@@ -24,49 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // 请求用户信息
-      var that = this;
-      var fail_callback = function () {
-          // 询问是否跳转
-          wx.showModal({
-              title: '未登录',
-              content: '登录以查看个人页面',
-              showCancel: true,
-              cancelText: '首页',
-              confirmText: '登录',
-              success: function (e) {
-                  if (e.confirm) {
-                      // 登录
-                      wx.redirectTo({
-                          url: '/pages/login/login',
-                      });
-                  } else {
-                      // 首页
-                      wx.switchTab({
-                          url: '/pages/index/index',
-                      });
-                  }
-
-              }
-          });
-      };
-
-      var success_callback = function () {
-          // 留在本页面。没必要搞出来另一个页面
-
-          // 拉取本人的文章列表
-          post_service.get_user_post(
-              that,
-              'post_list',
-              function() {},
-              fail_callback
-          );
-
-
-      };
       
-      // 请求用户信息
-      user_service.get_my_user_info(that, 'user_info', success_callback, fail_callback);
       
           
       
@@ -108,7 +66,51 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+      // 请求用户信息
+      var that = this;
+      if (JSON.stringify(that.data.user_info) == "{}") {
+      var fail_callback = function () {
+          // 询问是否跳转
+          wx.showModal({
+              title: '未登录',
+              content: '登录以查看个人页面',
+              showCancel: true,
+              cancelText: '首页',
+              confirmText: '登录',
+              success: function (e) {
+                  if (e.confirm) {
+                      // 登录
+                      wx.redirectTo({
+                          url: '/pages/login/login',
+                      });
+                  } else {
+                      // 首页
+                      wx.switchTab({
+                          url: '/pages/index/index',
+                      });
+                  }
+
+              }
+          });
+      };
+
+      var success_callback = function () {
+          // 留在本页面。没必要搞出来另一个页面
+
+          // 拉取本人的文章列表
+          post_service.get_user_post(
+              that,
+              'post_list',
+              function () { },
+              fail_callback
+          );
+
+
+      };
+
+      // 请求用户信息
+      user_service.get_my_user_info(that, 'user_info', success_callback, fail_callback);
+      }
   },
 
   /**
