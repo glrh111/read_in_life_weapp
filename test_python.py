@@ -21,7 +21,7 @@ sentry-cli releases set-commits --commit "glrh111/read_in_life_weapp@421c4efd36f
 # new release B 对于上述代码，不执行这条命令也行。因为代码里边关联了 release，上报 event 时会自动新建 release
 sentry-cli releases new -p python B
 
-sentry-cli releases set-commits --commit "glrh111/read_in_life_weapp@.." A
+sentry-cli releases set-commits --commit "glrh111/read_in_life_weapp@0b3fc9463d9de9d77ba3af834384b564f3467571..c0a97d8317d74d635233b3e5b003ca3a764cc08b" B
 
 """
 
